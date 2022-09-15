@@ -1,0 +1,1545 @@
+type AdminUser {
+  id: ID!
+  username: String
+}
+
+type Banner {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  slug: String
+  name: String
+  items: [ComponentVariantsItems]
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type BannerAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BannerConnection {
+  values: [Banner]
+  groupBy: BannerGroupBy
+  aggregate: BannerAggregator
+}
+
+type BannerConnectionCreated_at {
+  key: DateTime
+  connection: BannerConnection
+}
+
+type BannerConnectionCreated_by {
+  key: ID
+  connection: BannerConnection
+}
+
+type BannerConnectionId {
+  key: ID
+  connection: BannerConnection
+}
+
+type BannerConnectionName {
+  key: String
+  connection: BannerConnection
+}
+
+type BannerConnectionSlug {
+  key: String
+  connection: BannerConnection
+}
+
+type BannerConnectionUpdated_at {
+  key: DateTime
+  connection: BannerConnection
+}
+
+type BannerConnectionUpdated_by {
+  key: ID
+  connection: BannerConnection
+}
+
+type BannerGroupBy {
+  id: [BannerConnectionId]
+  created_at: [BannerConnectionCreated_at]
+  updated_at: [BannerConnectionUpdated_at]
+  slug: [BannerConnectionSlug]
+  name: [BannerConnectionName]
+  created_by: [BannerConnectionCreated_by]
+  updated_by: [BannerConnectionUpdated_by]
+}
+
+input BannerInput {
+  slug: String
+  name: String
+  items: [ComponentVariantsItemInput]
+  created_by: ID
+  updated_by: ID
+}
+
+type Brand {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  slug: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type BrandAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BrandConnection {
+  values: [Brand]
+  groupBy: BrandGroupBy
+  aggregate: BrandAggregator
+}
+
+type BrandConnectionCreated_at {
+  key: DateTime
+  connection: BrandConnection
+}
+
+type BrandConnectionCreated_by {
+  key: ID
+  connection: BrandConnection
+}
+
+type BrandConnectionId {
+  key: ID
+  connection: BrandConnection
+}
+
+type BrandConnectionName {
+  key: String
+  connection: BrandConnection
+}
+
+type BrandConnectionSlug {
+  key: String
+  connection: BrandConnection
+}
+
+type BrandConnectionUpdated_at {
+  key: DateTime
+  connection: BrandConnection
+}
+
+type BrandConnectionUpdated_by {
+  key: ID
+  connection: BrandConnection
+}
+
+type BrandGroupBy {
+  id: [BrandConnectionId]
+  created_at: [BrandConnectionCreated_at]
+  updated_at: [BrandConnectionUpdated_at]
+  name: [BrandConnectionName]
+  slug: [BrandConnectionSlug]
+  created_by: [BrandConnectionCreated_by]
+  updated_by: [BrandConnectionUpdated_by]
+}
+
+input BrandInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+type Collection {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  slug: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type CollectionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CollectionConnection {
+  values: [Collection]
+  groupBy: CollectionGroupBy
+  aggregate: CollectionAggregator
+}
+
+type CollectionConnectionCreated_at {
+  key: DateTime
+  connection: CollectionConnection
+}
+
+type CollectionConnectionCreated_by {
+  key: ID
+  connection: CollectionConnection
+}
+
+type CollectionConnectionId {
+  key: ID
+  connection: CollectionConnection
+}
+
+type CollectionConnectionName {
+  key: String
+  connection: CollectionConnection
+}
+
+type CollectionConnectionSlug {
+  key: String
+  connection: CollectionConnection
+}
+
+type CollectionConnectionUpdated_at {
+  key: DateTime
+  connection: CollectionConnection
+}
+
+type CollectionConnectionUpdated_by {
+  key: ID
+  connection: CollectionConnection
+}
+
+type CollectionGroupBy {
+  id: [CollectionConnectionId]
+  created_at: [CollectionConnectionCreated_at]
+  updated_at: [CollectionConnectionUpdated_at]
+  name: [CollectionConnectionName]
+  slug: [CollectionConnectionSlug]
+  created_by: [CollectionConnectionCreated_by]
+  updated_by: [CollectionConnectionUpdated_by]
+}
+
+input CollectionInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input ComponentItemsItemInput {
+  name: String
+  slug: String
+  image: ID
+  link: String
+}
+
+type ComponentItemsItems {
+  id: ID!
+  name: String
+  slug: String
+  image: UploadFile
+  link: String
+}
+
+input ComponentProductSizeSizeInput {
+  name: String
+  character: String
+}
+
+type ComponentProductSizeSizes {
+  id: ID!
+  name: String
+  character: String
+}
+
+input ComponentVariantsItemInput {
+  isImage: Boolean
+  image: ID
+  title: String
+  desc: String
+  btn_text: String
+  desc_hightlight: String
+  text_on_top: String
+}
+
+type ComponentVariantsItems {
+  id: ID!
+  isImage: Boolean
+  image: UploadFile
+  title: String
+  desc: String
+  btn_text: String
+  desc_hightlight: String
+  text_on_top: String
+}
+
+input ComponentVariantsVariantInput {
+  images: [ID]
+  price: Float
+  sale_price: Float
+  thumbnail: ID
+  name: String
+  sizes: [ComponentProductSizeSizeInput]
+  is_sale: Boolean
+}
+
+type ComponentVariantsVariants {
+  id: ID!
+  price: Float
+  sale_price: Float
+  thumbnail: UploadFile
+  name: String
+  sizes: [ComponentProductSizeSizes]
+  is_sale: Boolean
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+input createBannerInput {
+  data: BannerInput
+}
+
+type createBannerPayload {
+  banner: Banner
+}
+
+input createBrandInput {
+  data: BrandInput
+}
+
+type createBrandPayload {
+  brand: Brand
+}
+
+input createCollectionInput {
+  data: CollectionInput
+}
+
+type createCollectionPayload {
+  collection: Collection
+}
+
+input createProductCategoryInput {
+  data: ProductCategoryInput
+}
+
+type createProductCategoryPayload {
+  productCategory: ProductCategories
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Product
+}
+
+input createPromotionInput {
+  data: PromotionInput
+}
+
+type createPromotionPayload {
+  promotion: Promotions
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteBannerInput {
+  where: InputID
+}
+
+type deleteBannerPayload {
+  banner: Banner
+}
+
+input deleteBrandInput {
+  where: InputID
+}
+
+type deleteBrandPayload {
+  brand: Brand
+}
+
+input deleteCollectionInput {
+  where: InputID
+}
+
+type deleteCollectionPayload {
+  collection: Collection
+}
+
+input deleteProductCategoryInput {
+  where: InputID
+}
+
+type deleteProductCategoryPayload {
+  productCategory: ProductCategories
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Product
+}
+
+input deletePromotionInput {
+  where: InputID
+}
+
+type deletePromotionPayload {
+  promotion: Promotions
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editBannerInput {
+  slug: String
+  name: String
+  items: [editComponentVariantsItemInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editBrandInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editCollectionInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editComponentItemsItemInput {
+  id: ID
+  name: String
+  slug: String
+  image: ID
+  link: String
+}
+
+input editComponentProductSizeSizeInput {
+  id: ID
+  name: String
+  character: String
+}
+
+input editComponentVariantsItemInput {
+  id: ID
+  isImage: Boolean
+  image: ID
+  title: String
+  desc: String
+  btn_text: String
+  desc_hightlight: String
+  text_on_top: String
+}
+
+input editComponentVariantsVariantInput {
+  id: ID
+  images: [ID]
+  price: Float
+  sale_price: Float
+  thumbnail: ID
+  name: String
+  sizes: [editComponentProductSizeSizeInput]
+  is_sale: Boolean
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductCategoryInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  title: String
+  product_categories: [ID]
+  images: [ID]
+  is_featured: Boolean
+  is_hot: Boolean
+  price: Float
+  sale_price: Float
+  vendor: String
+  brands: [ID]
+  review: Int
+  is_out_of_stock: Boolean
+  depot: Int
+  inventory: Int
+  variants: [editComponentVariantsVariantInput]
+  is_active: Boolean
+  is_sale: Boolean
+  thumbnail: ID
+  collections: [ID]
+  slug: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editPromotionInput {
+  name: String
+  slug: String
+  items: [editComponentItemsItemInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Banner | BannerConnection | BannerAggregator | BannerGroupBy | BannerConnectionId | BannerConnectionCreated_at | BannerConnectionUpdated_at | BannerConnectionSlug | BannerConnectionName | BannerConnectionCreated_by | BannerConnectionUpdated_by | createBannerPayload | updateBannerPayload | deleteBannerPayload | Brand | BrandConnection | BrandAggregator | BrandGroupBy | BrandConnectionId | BrandConnectionCreated_at | BrandConnectionUpdated_at | BrandConnectionName | BrandConnectionSlug | BrandConnectionCreated_by | BrandConnectionUpdated_by | createBrandPayload | updateBrandPayload | deleteBrandPayload | Collection | CollectionConnection | CollectionAggregator | CollectionGroupBy | CollectionConnectionId | CollectionConnectionCreated_at | CollectionConnectionUpdated_at | CollectionConnectionName | CollectionConnectionSlug | CollectionConnectionCreated_by | CollectionConnectionUpdated_by | createCollectionPayload | updateCollectionPayload | deleteCollectionPayload | ProductCategories | ProductCategoriesConnection | ProductCategoriesAggregator | ProductCategoriesGroupBy | ProductCategoriesConnectionId | ProductCategoriesConnectionCreated_at | ProductCategoriesConnectionUpdated_at | ProductCategoriesConnectionName | ProductCategoriesConnectionSlug | ProductCategoriesConnectionCreated_by | ProductCategoriesConnectionUpdated_by | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductAggregatorSum | ProductAggregatorAvg | ProductAggregatorMin | ProductAggregatorMax | ProductGroupBy | ProductConnectionId | ProductConnectionCreated_at | ProductConnectionUpdated_at | ProductConnectionTitle | ProductConnectionIs_featured | ProductConnectionIs_hot | ProductConnectionPrice | ProductConnectionSale_price | ProductConnectionVendor | ProductConnectionReview | ProductConnectionIs_out_of_stock | ProductConnectionDepot | ProductConnectionInventory | ProductConnectionIs_active | ProductConnectionIs_sale | ProductConnectionThumbnail | ProductConnectionSlug | ProductConnectionCreated_by | ProductConnectionUpdated_by | createProductPayload | updateProductPayload | deleteProductPayload | Promotions | PromotionsConnection | PromotionsAggregator | PromotionsGroupBy | PromotionsConnectionId | PromotionsConnectionCreated_at | PromotionsConnectionUpdated_at | PromotionsConnectionName | PromotionsConnectionSlug | PromotionsConnectionCreated_by | PromotionsConnectionUpdated_by | createPromotionPayload | updatePromotionPayload | deletePromotionPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload | ComponentItemsItems | ComponentProductSizeSizes | ComponentVariantsItems | ComponentVariantsVariants
+
+type Mutation {
+  createBanner(input: createBannerInput): createBannerPayload
+  updateBanner(input: updateBannerInput): updateBannerPayload
+  deleteBanner(input: deleteBannerInput): deleteBannerPayload
+  createBrand(input: createBrandInput): createBrandPayload
+  updateBrand(input: updateBrandInput): updateBrandPayload
+  deleteBrand(input: deleteBrandInput): deleteBrandPayload
+  createCollection(input: createCollectionInput): createCollectionPayload
+  updateCollection(input: updateCollectionInput): updateCollectionPayload
+  deleteCollection(input: deleteCollectionInput): deleteCollectionPayload
+  createProductCategory(input: createProductCategoryInput): createProductCategoryPayload
+  updateProductCategory(input: updateProductCategoryInput): updateProductCategoryPayload
+  deleteProductCategory(input: deleteProductCategoryInput): deleteProductCategoryPayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createPromotion(input: createPromotionInput): createPromotionPayload
+  updatePromotion(input: updatePromotionInput): updatePromotionPayload
+  deletePromotion(input: deletePromotionInput): deletePromotionPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Product {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  is_featured: Boolean
+  is_hot: Boolean
+  price: Float
+  sale_price: Float
+  vendor: String
+  review: Int
+  is_out_of_stock: Boolean
+  depot: Int
+  inventory: Int
+  variants: [ComponentVariantsVariants]
+  is_active: Boolean
+  is_sale: Boolean
+  thumbnail: UploadFile
+  slug: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  product_categories(sort: String, limit: Int, start: Int, where: JSON): [ProductCategories]
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  brands(sort: String, limit: Int, start: Int, where: JSON): [Brand]
+  collections(sort: String, limit: Int, start: Int, where: JSON): [Collection]
+}
+
+type ProductAggregator {
+  count: Int
+  totalCount: Int
+  sum: ProductAggregatorSum
+  avg: ProductAggregatorAvg
+  min: ProductAggregatorMin
+  max: ProductAggregatorMax
+}
+
+type ProductAggregatorAvg {
+  price: Float
+  sale_price: Float
+  review: Float
+  depot: Float
+  inventory: Float
+}
+
+type ProductAggregatorMax {
+  price: Float
+  sale_price: Float
+  review: Float
+  depot: Float
+  inventory: Float
+}
+
+type ProductAggregatorMin {
+  price: Float
+  sale_price: Float
+  review: Float
+  depot: Float
+  inventory: Float
+}
+
+type ProductAggregatorSum {
+  price: Float
+  sale_price: Float
+  review: Float
+  depot: Float
+  inventory: Float
+}
+
+type ProductCategories {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  slug: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type ProductCategoriesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductCategoriesConnection {
+  values: [ProductCategories]
+  groupBy: ProductCategoriesGroupBy
+  aggregate: ProductCategoriesAggregator
+}
+
+type ProductCategoriesConnectionCreated_at {
+  key: DateTime
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionCreated_by {
+  key: ID
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionId {
+  key: ID
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionName {
+  key: String
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionSlug {
+  key: String
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionUpdated_at {
+  key: DateTime
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesConnectionUpdated_by {
+  key: ID
+  connection: ProductCategoriesConnection
+}
+
+type ProductCategoriesGroupBy {
+  id: [ProductCategoriesConnectionId]
+  created_at: [ProductCategoriesConnectionCreated_at]
+  updated_at: [ProductCategoriesConnectionUpdated_at]
+  name: [ProductCategoriesConnectionName]
+  slug: [ProductCategoriesConnectionSlug]
+  created_by: [ProductCategoriesConnectionCreated_by]
+  updated_by: [ProductCategoriesConnectionUpdated_by]
+}
+
+input ProductCategoryInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+type ProductConnection {
+  values: [Product]
+  groupBy: ProductGroupBy
+  aggregate: ProductAggregator
+}
+
+type ProductConnectionCreated_at {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionCreated_by {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionDepot {
+  key: Int
+  connection: ProductConnection
+}
+
+type ProductConnectionId {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionInventory {
+  key: Int
+  connection: ProductConnection
+}
+
+type ProductConnectionIs_active {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionIs_featured {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionIs_hot {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionIs_out_of_stock {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionIs_sale {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionPrice {
+  key: Float
+  connection: ProductConnection
+}
+
+type ProductConnectionReview {
+  key: Int
+  connection: ProductConnection
+}
+
+type ProductConnectionSale_price {
+  key: Float
+  connection: ProductConnection
+}
+
+type ProductConnectionSlug {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionThumbnail {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionTitle {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionUpdated_at {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionUpdated_by {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionVendor {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductGroupBy {
+  id: [ProductConnectionId]
+  created_at: [ProductConnectionCreated_at]
+  updated_at: [ProductConnectionUpdated_at]
+  title: [ProductConnectionTitle]
+  is_featured: [ProductConnectionIs_featured]
+  is_hot: [ProductConnectionIs_hot]
+  price: [ProductConnectionPrice]
+  sale_price: [ProductConnectionSale_price]
+  vendor: [ProductConnectionVendor]
+  review: [ProductConnectionReview]
+  is_out_of_stock: [ProductConnectionIs_out_of_stock]
+  depot: [ProductConnectionDepot]
+  inventory: [ProductConnectionInventory]
+  is_active: [ProductConnectionIs_active]
+  is_sale: [ProductConnectionIs_sale]
+  thumbnail: [ProductConnectionThumbnail]
+  slug: [ProductConnectionSlug]
+  created_by: [ProductConnectionCreated_by]
+  updated_by: [ProductConnectionUpdated_by]
+}
+
+input ProductInput {
+  title: String
+  product_categories: [ID]
+  images: [ID]
+  is_featured: Boolean
+  is_hot: Boolean
+  price: Float
+  sale_price: Float
+  vendor: String
+  brands: [ID]
+  review: Int
+  is_out_of_stock: Boolean
+  depot: Int
+  inventory: Int
+  variants: [ComponentVariantsVariantInput]
+  is_active: Boolean
+  is_sale: Boolean
+  thumbnail: ID
+  collections: [ID]
+  slug: String
+  created_by: ID
+  updated_by: ID
+}
+
+input PromotionInput {
+  name: String
+  slug: String
+  items: [ComponentItemsItemInput]
+  created_by: ID
+  updated_by: ID
+}
+
+type Promotions {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  slug: String
+  items: [ComponentItemsItems]
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type PromotionsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PromotionsConnection {
+  values: [Promotions]
+  groupBy: PromotionsGroupBy
+  aggregate: PromotionsAggregator
+}
+
+type PromotionsConnectionCreated_at {
+  key: DateTime
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionCreated_by {
+  key: ID
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionId {
+  key: ID
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionName {
+  key: String
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionSlug {
+  key: String
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionUpdated_at {
+  key: DateTime
+  connection: PromotionsConnection
+}
+
+type PromotionsConnectionUpdated_by {
+  key: ID
+  connection: PromotionsConnection
+}
+
+type PromotionsGroupBy {
+  id: [PromotionsConnectionId]
+  created_at: [PromotionsConnectionCreated_at]
+  updated_at: [PromotionsConnectionUpdated_at]
+  name: [PromotionsConnectionName]
+  slug: [PromotionsConnectionSlug]
+  created_by: [PromotionsConnectionCreated_by]
+  updated_by: [PromotionsConnectionUpdated_by]
+}
+
+type Query {
+  banner(id: ID!): Banner
+  banners(sort: String, limit: Int, start: Int, where: JSON): [Banner]
+  bannersConnection(sort: String, limit: Int, start: Int, where: JSON): BannerConnection
+  brand(id: ID!): Brand
+  brands(sort: String, limit: Int, start: Int, where: JSON): [Brand]
+  brandsConnection(sort: String, limit: Int, start: Int, where: JSON): BrandConnection
+  collection(id: ID!): Collection
+  collections(sort: String, limit: Int, start: Int, where: JSON): [Collection]
+  collectionsConnection(sort: String, limit: Int, start: Int, where: JSON): CollectionConnection
+  productCategory(id: ID!): ProductCategories
+  productCategories(sort: String, limit: Int, start: Int, where: JSON): [ProductCategories]
+  productCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductCategoriesConnection
+  product(id: ID!): Product
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductConnection
+  promotion(id: ID!): Promotions
+  promotions(sort: String, limit: Int, start: Int, where: JSON): [Promotions]
+  promotionsConnection(sort: String, limit: Int, start: Int, where: JSON): PromotionsConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateBannerInput {
+  where: InputID
+  data: editBannerInput
+}
+
+type updateBannerPayload {
+  banner: Banner
+}
+
+input updateBrandInput {
+  where: InputID
+  data: editBrandInput
+}
+
+type updateBrandPayload {
+  brand: Brand
+}
+
+input updateCollectionInput {
+  where: InputID
+  data: editCollectionInput
+}
+
+type updateCollectionPayload {
+  collection: Collection
+}
+
+input updateProductCategoryInput {
+  where: InputID
+  data: editProductCategoryInput
+}
+
+type updateProductCategoryPayload {
+  productCategory: ProductCategories
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Product
+}
+
+input updatePromotionInput {
+  where: InputID
+  data: editPromotionInput
+}
+
+type updatePromotionPayload {
+  promotion: Promotions
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  created_by: AdminUser
+  updated_by: AdminUser
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+  created_by: [UploadFileConnectionCreated_by]
+  updated_by: [UploadFileConnectionUpdated_by]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+  created_by: [UsersPermissionsRoleConnectionCreated_by]
+  updated_by: [UsersPermissionsRoleConnectionUpdated_by]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  created_by: [UsersPermissionsUserConnectionCreated_by]
+  updated_by: [UsersPermissionsUserConnectionUpdated_by]
+}
